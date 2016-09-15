@@ -7,7 +7,7 @@
 
 (check-version)
 
-(defn ^:exports hello
+(defn ^:export hello
   []
   (let [m-main  (.require js/b4w "main")
         m-data  (.require js/b4w "data")

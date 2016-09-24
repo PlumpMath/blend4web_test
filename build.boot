@@ -13,4 +13,5 @@
   (comp
     (watch)
     (cljs :optimizations :simple)
-    (target)))
+    (target)
+    (serve :port 8000)))

@@ -8,6 +8,8 @@
 (def m-data (.require js/b4w "data"))
 (def m-app (.require js/b4w "app"))
 (def m-scene (.require js/b4w "scenes"))
+(def m-main (.require js/b4w "main"))
+(def canvas (.getElementById js/document "container"))
 
 (defn ^:export load-cb [data-id canvas]
   (.log js/console "load cb data-id" data-id)
@@ -30,4 +32,4 @@
                        "show_fps" true
                        "console_verbose" true
                        "autoresize" true))
-  (.report-app-error m-app "ERROR" "so and so" "replace" "a"))
+  (.init m-main canvas))

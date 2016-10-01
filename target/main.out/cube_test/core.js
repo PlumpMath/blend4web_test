@@ -30,6 +30,7 @@ return (function cube_test$core$start_$_manifold_cb(obj,manifold_id){
 
 var current_camera = m_scene.get_active_camera();
 var cube = m_scene.get_object_by_name("Cube");
+var floor = m_scene.get_object_by_name("Floor");
 var sensor_data = cljs.core.first.call(null,obj);
 var mat_name = cljs.core.first.call(null,m_material.get_materials_names(cube));
 if((cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"current","current",-1088038603).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,position)),new cljs.core.Keyword(null,"back-limit","back-limit",-289535030).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,position)))) || (cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"current","current",-1088038603).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,position)),new cljs.core.Keyword(null,"front-limit","front-limit",-271127864).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,position))))){
@@ -39,11 +40,11 @@ cljs.core.swap_BANG_.call(null,position,cljs.core.assoc,new cljs.core.Keyword(nu
 
 cljs.core.swap_BANG_.call(null,position,cljs.core.assoc,new cljs.core.Keyword(null,"current","current",-1088038603),(new cljs.core.Keyword(null,"direction","direction",-633359395).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,position)) + new cljs.core.Keyword(null,"current","current",-1088038603).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,position))));
 
-m_material.set_diffuse_color(cube,mat_name,m_rgba.from_values((cljs.core.rand_int.call(null,(10)) / (10)),(cljs.core.rand_int.call(null,(10)) / (10)),(cljs.core.rand_int.call(null,(10)) / (10))));
+m_material.set_diffuse_color(cube,mat_name,m_rgba.from_values((cljs.core.rand_int.call(null,(7)) / (10)),(cljs.core.rand_int.call(null,(3)) / (10)),(cljs.core.rand_int.call(null,(2)) / (10))));
 
-m_trans.set_translation(cube,(0),(1),(new cljs.core.Keyword(null,"current","current",-1088038603).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,position)) / (10)));
+m_trans.set_translation(cube,(0),(new cljs.core.Keyword(null,"current","current",-1088038603).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,position)) / (10)),(1));
 
-return m_trans.rotate_y_local(cube,sensor_data);
+return m_trans.rotate_z_local(cube,sensor_data);
 });})(m_main,m_data,m_scene,m_config,m_trans,m_camera,m_controls,m_material,m_rgba,canvas,position,cube_range))
 ;
 

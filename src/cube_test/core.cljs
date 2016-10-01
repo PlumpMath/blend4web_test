@@ -37,32 +37,34 @@
       "Make any per-tick changes here."
       (let [current-camera (.get-active-camera m-scene)
             cube           (.get-object-by-name m-scene "Cube")
+            floor          (.get-object-by-name m-scene "Floor")
             sensor-data    (first obj)
             mat-name       (first (.get-materials-names m-material cube))]
 
             (if (or (= (:current @position) (:back-limit @position))
                     (= (:current @position) (:front-limit @position)))
-                      (swap! position assoc :direction (* -1 (:direction @position))))
+                      (swap! position assoc :direction (* -1
+                                                          (:direction @position))))
 
             (swap! position assoc :current (+ (:direction @position)
                                               (:current @position)))
 
             (.set-diffuse-color m-material cube mat-name
                                 (.from-values m-rgba
-                                            (/ (rand-int 10) 10)
-                                            (/ (rand-int 10) 10)
-                                            (/ (rand-int 10) 10)))
+                                            (/ (rand-int 7) 10)
+                                            (/ (rand-int 3) 10)
+                                            (/ (rand-int 2) 10)))
 
             (.set-translation m-trans cube
                               0
-                              1
-                              (/ (:current @position) 10))
+                              (/ (:current @position) 10)
+                              1)
 
-            (.rotate-y-local m-trans cube sensor-data)))
+            (.rotate-z-local m-trans cube sensor-data)))
 
     (defn stageload-cb [data-id success]
       "Use camera, translation and other b4w modules if you want to do something
-      static (ie the whole time its running). If you want something to change
+      static (ie. the whole time its running). If you want something to change
       over time, invoke the module functions within sensor manifold's callback
       scope instead.  In this case, that callback function would be manifold-cb"
       (when (.is-primary-loaded m-data)
